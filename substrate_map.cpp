@@ -8,19 +8,19 @@ uint8_t substrate_map[40] =
 0x2A,  //4
 0x32,  //5
 0x5A,  //6
-0x54,  //7
-0x56,  //8
+0x52,  //7
+0x50,  //8
 0x20,  //9
 0x2C,  //10
 0x34,  //11
 0x5C,  //12
-0x52,  //13
+0x54,  //13
 0x48,  //14
 0x22,  //15
 0x2E,  //16
 0x36,  //17
 0x5E,  //18
-0x50,  //19
+0x56,  //19
 0x4A,  //20
 0x24,  //21
 0x38,  //22
@@ -64,7 +64,7 @@ uint8_t pin_map[14] =
 
 uint8_t map_pin(uint8_t index)
 {
-  if(index > 14)
+  if(index < 1 || index > 14)
     return 255;
     
   return pin_map[index-1];
