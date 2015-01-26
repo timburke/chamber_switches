@@ -6,9 +6,24 @@ uint8_t setup_error = 0;
 uint8_t last_address_error = 0;
 uint8_t setup_done = 0;
 
+uint8_t error_status[5];
+
+void mark_error(int substrate)
+{
+  int index = substrate % 8;
+  int offset = substrate / 8;
+  
+  error_status[index] |= (1 << offset);
+}
+
 void setup()
 {
  int i;
+ 
+ for (i=0; i<5; ++i)
+ {
+   error_status[i] = 0;
+ }
  
  setup_error = 0;
  
@@ -34,6 +49,7 @@ void setup()
    {
      setup_error = 1;
      last_address_error = i;
+     mark_error(i-1);
    }
  }
  
